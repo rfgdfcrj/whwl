@@ -730,7 +730,12 @@
                 touchStartX.value = e.touches[0].clientX;
             };
 
-            const handleTouchEnd = () => {
+            const handleTouchEnd = (e) => {
+                if (showMajorDetail.value) {
+                    closeMajorDetail();
+                    return;
+                }
+                touchEndX.value = e.changedTouches[0].clientX;
                 const diff = touchStartX.value - touchEndX.value;
                 if (Math.abs(diff) > 50) {
                     diff > 0 ? goNext() : goPrev();
