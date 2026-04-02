@@ -1245,7 +1245,19 @@
                 }
             };
 
+            const preloadImages = (images) => {
+                images.forEach(src => {
+                    const img = new Image();
+                    img.src = src;
+                });
+            };
+
             onMounted(() => {
+                preloadImages(gallery1Images);
+                preloadImages(gallery2Images);
+                preloadImages(gallery3Images);
+                preloadImages(gallery4Images);
+                preloadImages(galleryNewImages);
                 document.addEventListener('keydown', handleKeydown);
                 document.addEventListener('touchstart', handleTouchStart);
                 document.addEventListener('touchend', handleTouchEnd);
