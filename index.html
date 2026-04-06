@@ -166,8 +166,8 @@
         .corner-logo-school {
             position: fixed;
             top: 12px;
-            left: 12px;
-            width: 60px;
+            right: 12px;
+            width: 320px;
             height: auto;
             opacity: 0.85;
             z-index: 10;
@@ -771,15 +771,16 @@
         <button class="gallery-back-btn" @click="closeGallery">← 返回培养特色</button>
         <h3 class="gallery-title">📸 活动相册 ({{ gallery1Index + 1 }}/{{ gallery1Images.length }})</h3>
         <div class="gallery-images" style="flex-direction: column;">
-            <div class="gallery-image-container" @click="galleryToNextSlide">
+            <div class="gallery-image-container" @click="gallery1Next">
                 <img :src="gallery1Images[gallery1Index]" :alt="'活动照片' + (gallery1Index + 1)">
             </div>
         </div>
         <div style="display: flex; gap: 15px; margin-top: 20px;">
             <button class="gallery-btn" style="background: linear-gradient(135deg, #2c7cb6, #3498db);" @click="gallery1Prev" v-if="gallery1Index > 0">◀ 上一张</button>
-            <button class="gallery-btn" @click="galleryToNextSlide">关闭相册 ▶</button>
+            <button class="gallery-btn" style="background: linear-gradient(135deg, #27ae60, #2ecc71);" @click="gallery1Next" v-if="gallery1Index < gallery1Images.length - 1">下一张 ▶</button>
+            <button class="gallery-btn" @click="closeGallery">关闭相册</button>
         </div>
-        <p class="gallery-hint">点击图片或"关闭相册"跳转下一页</p>
+        <p class="gallery-hint">点击图片或"下一张"查看下一张图片</p>
     </div>
 
     <!-- 图片相册2 -->
@@ -787,15 +788,16 @@
         <button class="gallery-back-btn" @click="closeGallery2">← 返回培养特色</button>
         <h3 class="gallery-title">📸 活动相册 ({{ gallery2Index + 1 }}/{{ gallery2Images.length }})</h3>
         <div class="gallery-images" style="flex-direction: column;">
-            <div class="gallery-image-container" @click="gallery2ToNextSlide">
+            <div class="gallery-image-container" @click="gallery2Next">
                 <img :src="gallery2Images[gallery2Index]" :alt="'活动照片' + (gallery2Index + 1)">
             </div>
         </div>
         <div style="display: flex; gap: 15px; margin-top: 20px;">
             <button class="gallery-btn" style="background: linear-gradient(135deg, #2c7cb6, #3498db);" @click="gallery2Prev" v-if="gallery2Index > 0">◀ 上一张</button>
-            <button class="gallery-btn" @click="gallery2ToNextSlide">关闭相册 ▶</button>
+            <button class="gallery-btn" style="background: linear-gradient(135deg, #27ae60, #2ecc71);" @click="gallery2Next" v-if="gallery2Index < gallery2Images.length - 1">下一张 ▶</button>
+            <button class="gallery-btn" @click="closeGallery2">关闭相册</button>
         </div>
-        <p class="gallery-hint">点击图片或"关闭相册"跳转下一页</p>
+        <p class="gallery-hint">点击图片或"下一张"查看下一张图片</p>
     </div>
 
     <!-- 图片相册3 -->
@@ -803,15 +805,16 @@
         <button class="gallery-back-btn" @click="closeGallery3">← 返回培养特色</button>
         <h3 class="gallery-title">📸 活动相册 ({{ gallery3Index + 1 }}/{{ gallery3Images.length }})</h3>
         <div class="gallery-images" style="flex-direction: column;">
-            <div class="gallery-image-container" @click="gallery3ToNextSlide">
+            <div class="gallery-image-container" @click="gallery3Next">
                 <img :src="gallery3Images[gallery3Index]" :alt="'活动照片' + (gallery3Index + 1)">
             </div>
         </div>
         <div style="display: flex; gap: 15px; margin-top: 20px;">
             <button class="gallery-btn" style="background: linear-gradient(135deg, #2c7cb6, #3498db);" @click="gallery3Prev" v-if="gallery3Index > 0">◀ 上一张</button>
-            <button class="gallery-btn" @click="gallery3ToNextSlide">关闭相册 ▶</button>
+            <button class="gallery-btn" style="background: linear-gradient(135deg, #27ae60, #2ecc71);" @click="gallery3Next" v-if="gallery3Index < gallery3Images.length - 1">下一张 ▶</button>
+            <button class="gallery-btn" @click="closeGallery3">关闭相册</button>
         </div>
-        <p class="gallery-hint">点击图片或"关闭相册"跳转下一页</p>
+        <p class="gallery-hint">点击图片或"下一张"查看下一张图片</p>
     </div>
 
     <!-- 图片相册4 -->
@@ -819,15 +822,16 @@
         <button class="gallery-back-btn" @click="closeGallery4">← 返回培养特色</button>
         <h3 class="gallery-title">📸 活动相册 ({{ gallery4Index + 1 }}/{{ gallery4Images.length }})</h3>
         <div class="gallery-images" style="flex-direction: column;">
-            <div class="gallery-image-container" @click="gallery4ToNextSlide">
+            <div class="gallery-image-container" @click="gallery4Next">
                 <img :src="gallery4Images[gallery4Index]" :alt="'活动照片' + (gallery4Index + 1)">
             </div>
         </div>
         <div style="display: flex; gap: 15px; margin-top: 20px;">
             <button class="gallery-btn" style="background: linear-gradient(135deg, #2c7cb6, #3498db);" @click="gallery4Prev" v-if="gallery4Index > 0">◀ 上一张</button>
-            <button class="gallery-btn" @click="gallery4ToNextSlide">关闭相册 ▶</button>
+            <button class="gallery-btn" style="background: linear-gradient(135deg, #27ae60, #2ecc71);" @click="gallery4Next" v-if="gallery4Index < gallery4Images.length - 1">下一张 ▶</button>
+            <button class="gallery-btn" @click="closeGallery4">关闭相册</button>
         </div>
-        <p class="gallery-hint">点击图片或"关闭相册"跳转下一页</p>
+        <p class="gallery-hint">点击图片或"下一张"查看下一张图片</p>
     </div>
 
     <!-- 最新动态相册 -->
@@ -835,15 +839,16 @@
         <button class="gallery-back-btn" @click="closeGalleryNew">← 返回培养特色</button>
         <h3 class="gallery-title">🆕 最新动态 ({{ galleryNewIndex + 1 }}/{{ galleryNewImages.length }})</h3>
         <div class="gallery-images" style="flex-direction: column;">
-            <div class="gallery-image-container" @click="galleryNewToNextSlide">
+            <div class="gallery-image-container" @click="galleryNewNext">
                 <img :src="galleryNewImages[galleryNewIndex]" :alt="'最新动态' + (galleryNewIndex + 1)">
             </div>
         </div>
         <div style="display: flex; gap: 15px; margin-top: 20px;">
             <button class="gallery-btn" style="background: linear-gradient(135deg, #2c7cb6, #3498db);" @click="galleryNewPrev" v-if="galleryNewIndex > 0">◀ 上一张</button>
-            <button class="gallery-btn" @click="galleryNewToNextSlide">关闭相册 ▶</button>
+            <button class="gallery-btn" style="background: linear-gradient(135deg, #27ae60, #2ecc71);" @click="galleryNewNext" v-if="galleryNewIndex < galleryNewImages.length - 1">下一张 ▶</button>
+            <button class="gallery-btn" @click="closeGalleryNew">关闭相册</button>
         </div>
-        <p class="gallery-hint">点击图片或"关闭相册"跳转下一页</p>
+        <p class="gallery-hint">点击图片或"下一张"查看下一张图片</p>
     </div>
 
     <!-- 导航按钮 -->
@@ -1015,11 +1020,6 @@
                 }
             };
 
-            const galleryToNextSlide = () => {
-                showGallery.value = false;
-                goNext();
-            };
-
             const openGallery2 = () => {
                 gallery2Index.value = 0;
                 showGallery2.value = true;
@@ -1044,8 +1044,7 @@
             };
 
             const gallery2ToNextSlide = () => {
-                showGallery2.value = false;
-                goNext();
+                closeGallery2();
             };
 
             const openGallery3 = () => {
@@ -1072,8 +1071,7 @@
             };
 
             const gallery3ToNextSlide = () => {
-                showGallery3.value = false;
-                goNext();
+                closeGallery3();
             };
 
             const openGallery4 = () => {
@@ -1100,8 +1098,7 @@
             };
 
             const gallery4ToNextSlide = () => {
-                showGallery4.value = false;
-                goNext();
+                closeGallery4();
             };
 
             const openGalleryNew = () => {
@@ -1128,8 +1125,7 @@
             };
 
             const galleryNewToNextSlide = () => {
-                showGalleryNew.value = false;
-                goNext();
+                closeGalleryNew();
             };
 
             const toggleFullscreen = () => {
@@ -1247,7 +1243,6 @@
                 goPrev, goNext, goToSlide, openMajorDetail, closeMajorDetail, toggleFullscreen,
                 openGallery, closeGallery, gallery1Next, gallery1Prev, gallery1Images, gallery1Index,
                 openGallery2, closeGallery2, gallery2Next, gallery2Prev, gallery2Images, gallery2Index,
-                galleryToNextSlide, gallery2ToNextSlide,
                 openGallery3, closeGallery3, gallery3Next, gallery3Prev, gallery3Images, gallery3Index, gallery3ToNextSlide,
                 openGallery4, closeGallery4, gallery4Next, gallery4Prev, gallery4Images, gallery4Index, gallery4ToNextSlide,
                 openGalleryNew, closeGalleryNew, galleryNewNext, galleryNewPrev, galleryNewImages, galleryNewIndex, galleryNewToNextSlide
