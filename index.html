@@ -163,6 +163,15 @@
             opacity: 0.8;
             z-index: 10;
         }
+        .corner-logo-school {
+            position: fixed;
+            top: 12px;
+            left: 12px;
+            width: 60px;
+            height: auto;
+            opacity: 0.85;
+            z-index: 10;
+        }
         .corner-logo-right {
             display: none;
         }
@@ -534,6 +543,7 @@
             .slide ul { max-width: 800px; margin: 14px auto; padding-left: 1.5rem; }
             .slide li { font-size: 1rem; padding: 12px 16px; margin: 10px 0; border-radius: 12px; border-left-width: 4px; }
             .corner-logo { width: 70px; top: 16px; right: 16px; }
+            .corner-logo-school { width: 80px; top: 16px; left: 16px; }
             .corner-logo-right { display: block; position: fixed; top: 16px; right: 100px; width: 200px; opacity: 0.85; }
             .majors-grid { grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 900px; }
             .major-item { padding: 16px; min-height: 200px; border-radius: 16px; }
@@ -596,6 +606,7 @@
 
     <!-- 封面 -->
     <div class="slide" :class="{ active: currentSlide === 0 }">
+        <img src="photo/school.png" class="corner-logo-school" alt="school">
         <img src="photo/whwl_1.png" class="corner-logo" alt="whwl_1">
         <h1 style="font-size: 2rem;">🏫 武汉文理学院<br>信息与计算机学院</h1>
         <h2 style="border:none; text-align:center; font-size: 1.6rem; margin-top: 20px;">2026 年招生宣传</h2>
@@ -760,16 +771,15 @@
         <button class="gallery-back-btn" @click="closeGallery">← 返回培养特色</button>
         <h3 class="gallery-title">📸 活动相册 ({{ gallery1Index + 1 }}/{{ gallery1Images.length }})</h3>
         <div class="gallery-images" style="flex-direction: column;">
-            <div class="gallery-image-container" @click="gallery1Next">
+            <div class="gallery-image-container" @click="galleryToNextSlide">
                 <img :src="gallery1Images[gallery1Index]" :alt="'活动照片' + (gallery1Index + 1)">
             </div>
         </div>
         <div style="display: flex; gap: 15px; margin-top: 20px;">
             <button class="gallery-btn" style="background: linear-gradient(135deg, #2c7cb6, #3498db);" @click="gallery1Prev" v-if="gallery1Index > 0">◀ 上一张</button>
-            <button class="gallery-btn" @click="gallery1Next">{{ gallery1Index < gallery1Images.length - 1 ? '下一张 ▶' : '关闭相册' }}</button>
+            <button class="gallery-btn" @click="galleryToNextSlide">关闭相册 ▶</button>
         </div>
-        <p class="gallery-hint">点击图片查看下一张 · 查看完毕后点击"关闭相册"跳转下一页</p>
-        <button class="gallery-next-hint" @click="galleryToNextSlide">跳转到下一页 ▶</button>
+        <p class="gallery-hint">点击图片或"关闭相册"跳转下一页</p>
     </div>
 
     <!-- 图片相册2 -->
@@ -777,16 +787,15 @@
         <button class="gallery-back-btn" @click="closeGallery2">← 返回培养特色</button>
         <h3 class="gallery-title">📸 活动相册 ({{ gallery2Index + 1 }}/{{ gallery2Images.length }})</h3>
         <div class="gallery-images" style="flex-direction: column;">
-            <div class="gallery-image-container" @click="gallery2Next">
+            <div class="gallery-image-container" @click="gallery2ToNextSlide">
                 <img :src="gallery2Images[gallery2Index]" :alt="'活动照片' + (gallery2Index + 1)">
             </div>
         </div>
         <div style="display: flex; gap: 15px; margin-top: 20px;">
             <button class="gallery-btn" style="background: linear-gradient(135deg, #2c7cb6, #3498db);" @click="gallery2Prev" v-if="gallery2Index > 0">◀ 上一张</button>
-            <button class="gallery-btn" @click="gallery2Next">{{ gallery2Index < gallery2Images.length - 1 ? '下一张 ▶' : '关闭相册' }}</button>
+            <button class="gallery-btn" @click="gallery2ToNextSlide">关闭相册 ▶</button>
         </div>
-        <p class="gallery-hint">点击图片查看下一张 · 查看完毕后点击"关闭相册"跳转下一页</p>
-        <button class="gallery-next-hint" @click="gallery2ToNextSlide">跳转到下一页 ▶</button>
+        <p class="gallery-hint">点击图片或"关闭相册"跳转下一页</p>
     </div>
 
     <!-- 图片相册3 -->
@@ -794,16 +803,15 @@
         <button class="gallery-back-btn" @click="closeGallery3">← 返回培养特色</button>
         <h3 class="gallery-title">📸 活动相册 ({{ gallery3Index + 1 }}/{{ gallery3Images.length }})</h3>
         <div class="gallery-images" style="flex-direction: column;">
-            <div class="gallery-image-container" @click="gallery3Next">
+            <div class="gallery-image-container" @click="gallery3ToNextSlide">
                 <img :src="gallery3Images[gallery3Index]" :alt="'活动照片' + (gallery3Index + 1)">
             </div>
         </div>
         <div style="display: flex; gap: 15px; margin-top: 20px;">
             <button class="gallery-btn" style="background: linear-gradient(135deg, #2c7cb6, #3498db);" @click="gallery3Prev" v-if="gallery3Index > 0">◀ 上一张</button>
-            <button class="gallery-btn" @click="gallery3Next">{{ gallery3Index < gallery3Images.length - 1 ? '下一张 ▶' : '关闭相册' }}</button>
+            <button class="gallery-btn" @click="gallery3ToNextSlide">关闭相册 ▶</button>
         </div>
-        <p class="gallery-hint">点击图片查看下一张 · 查看完毕后点击"关闭相册"跳转下一页</p>
-        <button class="gallery-next-hint" @click="gallery3ToNextSlide">跳转到下一页 ▶</button>
+        <p class="gallery-hint">点击图片或"关闭相册"跳转下一页</p>
     </div>
 
     <!-- 图片相册4 -->
@@ -811,16 +819,15 @@
         <button class="gallery-back-btn" @click="closeGallery4">← 返回培养特色</button>
         <h3 class="gallery-title">📸 活动相册 ({{ gallery4Index + 1 }}/{{ gallery4Images.length }})</h3>
         <div class="gallery-images" style="flex-direction: column;">
-            <div class="gallery-image-container" @click="gallery4Next">
+            <div class="gallery-image-container" @click="gallery4ToNextSlide">
                 <img :src="gallery4Images[gallery4Index]" :alt="'活动照片' + (gallery4Index + 1)">
             </div>
         </div>
         <div style="display: flex; gap: 15px; margin-top: 20px;">
             <button class="gallery-btn" style="background: linear-gradient(135deg, #2c7cb6, #3498db);" @click="gallery4Prev" v-if="gallery4Index > 0">◀ 上一张</button>
-            <button class="gallery-btn" @click="gallery4Next">{{ gallery4Index < gallery4Images.length - 1 ? '下一张 ▶' : '关闭相册' }}</button>
+            <button class="gallery-btn" @click="gallery4ToNextSlide">关闭相册 ▶</button>
         </div>
-        <p class="gallery-hint">点击图片查看下一张 · 查看完毕后点击"关闭相册"跳转下一页</p>
-        <button class="gallery-next-hint" @click="gallery4ToNextSlide">跳转到下一页 ▶</button>
+        <p class="gallery-hint">点击图片或"关闭相册"跳转下一页</p>
     </div>
 
     <!-- 最新动态相册 -->
@@ -828,16 +835,15 @@
         <button class="gallery-back-btn" @click="closeGalleryNew">← 返回培养特色</button>
         <h3 class="gallery-title">🆕 最新动态 ({{ galleryNewIndex + 1 }}/{{ galleryNewImages.length }})</h3>
         <div class="gallery-images" style="flex-direction: column;">
-            <div class="gallery-image-container" @click="galleryNewNext">
+            <div class="gallery-image-container" @click="galleryNewToNextSlide">
                 <img :src="galleryNewImages[galleryNewIndex]" :alt="'最新动态' + (galleryNewIndex + 1)">
             </div>
         </div>
         <div style="display: flex; gap: 15px; margin-top: 20px;">
             <button class="gallery-btn" style="background: linear-gradient(135deg, #2c7cb6, #3498db);" @click="galleryNewPrev" v-if="galleryNewIndex > 0">◀ 上一张</button>
-            <button class="gallery-btn" @click="galleryNewNext">{{ galleryNewIndex < galleryNewImages.length - 1 ? '下一张 ▶' : '关闭相册' }}</button>
+            <button class="gallery-btn" @click="galleryNewToNextSlide">关闭相册 ▶</button>
         </div>
-        <p class="gallery-hint">点击图片查看下一张 · 查看完毕后点击"关闭相册"跳转下一页</p>
-        <button class="gallery-next-hint" @click="galleryNewToNextSlide">跳转到下一页 ▶</button>
+        <p class="gallery-hint">点击图片或"关闭相册"跳转下一页</p>
     </div>
 
     <!-- 导航按钮 -->
@@ -1168,32 +1174,43 @@
             };
 
             const handleTouchEnd = (e) => {
+                touchEndX.value = e.changedTouches[0].clientX;
+                const diff = touchStartX.value - touchEndX.value;
+                
                 if (showMajorDetail.value) {
                     closeMajorDetail();
                     return;
                 }
                 if (showGallery.value) {
-                    closeGallery();
+                    if (Math.abs(diff) > 30) {
+                        diff > 0 ? gallery1Next() : gallery1Prev();
+                    }
                     return;
                 }
                 if (showGallery2.value) {
-                    closeGallery2();
+                    if (Math.abs(diff) > 30) {
+                        diff > 0 ? gallery2Next() : gallery2Prev();
+                    }
                     return;
                 }
                 if (showGallery3.value) {
-                    closeGallery3();
+                    if (Math.abs(diff) > 30) {
+                        diff > 0 ? gallery3Next() : gallery3Prev();
+                    }
                     return;
                 }
                 if (showGallery4.value) {
-                    closeGallery4();
+                    if (Math.abs(diff) > 30) {
+                        diff > 0 ? gallery4Next() : gallery4Prev();
+                    }
                     return;
                 }
                 if (showGalleryNew.value) {
-                    closeGalleryNew();
+                    if (Math.abs(diff) > 30) {
+                        diff > 0 ? galleryNewNext() : galleryNewPrev();
+                    }
                     return;
                 }
-                touchEndX.value = e.changedTouches[0].clientX;
-                const diff = touchStartX.value - touchEndX.value;
                 if (Math.abs(diff) > 50) {
                     diff > 0 ? goNext() : goPrev();
                 }
