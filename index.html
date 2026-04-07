@@ -166,8 +166,8 @@
         .corner-logo-school {
             position: fixed;
             top: 12px;
-            right: 12px;
-            width: 320px;
+            right: 70px;
+            width: 60px;
             height: auto;
             opacity: 0.85;
             z-index: 10;
@@ -475,11 +475,13 @@
             justify-content: center;
         }
         .gallery-image-container img {
+            width: 100%;
             max-width: 100%;
-            max-height: 50vh;
-            border-radius: 12px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
-            border: 2px solid rgba(255, 255, 255, 0.1);
+            max-height: 40vh;
+            border-radius: 10px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            object-fit: contain;
         }
         .gallery-hint {
             color: rgba(255, 255, 255, 0.6);
@@ -543,7 +545,7 @@
             .slide ul { max-width: 800px; margin: 14px auto; padding-left: 1.5rem; }
             .slide li { font-size: 1rem; padding: 12px 16px; margin: 10px 0; border-radius: 12px; border-left-width: 4px; }
             .corner-logo { width: 70px; top: 16px; right: 16px; }
-            .corner-logo-school { width: 80px; top: 16px; left: 16px; }
+            .corner-logo-school { width: 80px; top: 16px; right: 100px; }
             .corner-logo-right { display: block; position: fixed; top: 16px; right: 100px; width: 200px; opacity: 0.85; }
             .majors-grid { grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 900px; }
             .major-item { padding: 16px; min-height: 200px; border-radius: 16px; }
@@ -576,19 +578,55 @@
             .back-btn { padding: 14px 32px; font-size: 15px; margin-top: 20px; }
             .progress-bar { height: 5px; }
         }
+        @media (max-width: 480px) {
+            .slide { padding: 60px 16px 100px; }
+            .slide h1 { font-size: 1.8rem; margin-bottom: 16px; }
+            .slide h2 { font-size: 1.3rem; margin: 16px 0 12px; }
+            .slide h3 { font-size: 1.1rem; }
+            .slide p { font-size: 1rem; line-height: 1.7; }
+            .slide li { font-size: 0.9rem; padding: 12px 14px; margin: 8px 0; }
+            .majors-grid { gap: 10px; }
+            .major-item { padding: 12px; min-height: 140px; }
+            .major-title { font-size: 0.9rem; }
+            .major-icon { font-size: 1.1rem; }
+            .major-desc { font-size: 0.8rem; }
+            .major-btn { padding: 6px 12px; font-size: 0.7rem; }
+            .corner-logo { width: 45px; top: 10px; right: 10px; }
+            .corner-logo-school { width: 60px; top: 10px; right: 65px; }
+            .nav-buttons { bottom: 16px; padding: 10px 16px; gap: 10px; }
+            .nav-btn { padding: 14px 16px; font-size: 14px; min-width: 80px; }
+            .slide-counter { top: 10px; left: 10px; padding: 8px 12px; font-size: 12px; }
+            .slide-counter .current { font-size: 16px; }
+            .touch-hint { bottom: 80px; padding: 10px 20px; font-size: 12px; }
+            .gallery-btn { padding: 10px 16px; font-size: 13px; }
+            .gallery-title { font-size: 1.1rem; margin-bottom: 16px; }
+            .gallery-images { gap: 16px; }
+            .gallery-image-container img { max-height: 45vh; }
+            .gallery-back-btn { top: 10px; left: 10px; padding: 10px 16px; font-size: 13px; }
+            .gallery-next-hint { bottom: 16px; right: 10px; padding: 12px 20px; font-size: 13px; }
+            .gallery-hint { font-size: 12px; }
+            .detail-content { padding: 16px; border-radius: 16px; }
+            .detail-content h3 { font-size: 1.1rem; margin-top: 16px; }
+            .detail-content p { font-size: 0.9rem; line-height: 1.6; }
+            .detail-content li { font-size: 0.85rem; }
+            .back-btn { padding: 14px 28px; font-size: 14px; margin-top: 16px; }
+            .progress-bar { height: 4px; }
+            .slide.active { transform: scale(1); }
+        }
         @media (max-width: 380px) {
-            .slide h1 { font-size: 1.5rem; }
+            .slide h1 { font-size: 1.6rem; }
             .slide h2 { font-size: 1.2rem; }
-            .slide li { font-size: 0.85rem; padding: 8px 10px; }
-            .majors-grid { gap: 8px; }
-            .major-item { padding: 10px; min-height: 140px; }
-            .major-title { font-size: 0.8rem; }
-            .major-desc { font-size: 0.65rem; }
+            .slide p { font-size: 0.95rem; }
+            .slide li { font-size: 0.85rem; }
+            .major-item { min-height: 130px; }
+            .major-title { font-size: 0.85rem; }
+            .major-desc { font-size: 0.75rem; }
         }
     </style>
 </head>
 <body>
 <div id="app">
+    <img src="photo/school.png" class="corner-logo-school" alt="school">
     <div class="progress-bar" :style="{ width: progressWidth + '%' }" v-if="!showGallery && !showGallery2 && !showGallery3 && !showGallery4 && !showGalleryNew"></div>
     
     <div class="slide-counter" v-if="!showGallery && !showGallery2 && !showGallery3 && !showGallery4 && !showGalleryNew">
@@ -606,7 +644,6 @@
 
     <!-- 封面 -->
     <div class="slide" :class="{ active: currentSlide === 0 }">
-        <img src="photo/school.png" class="corner-logo-school" alt="school">
         <img src="photo/whwl_1.png" class="corner-logo" alt="whwl_1">
         <h1 style="font-size: 2rem;">🏫 武汉文理学院<br>信息与计算机学院</h1>
         <h2 style="border:none; text-align:center; font-size: 1.6rem; margin-top: 20px;">2026 年招生宣传</h2>
@@ -700,6 +737,7 @@
 
     <!-- 培养特色 -->
     <div class="slide" :class="{ active: currentSlide === 3 }">
+        <img src="photo/school.png" class="corner-logo-school" alt="school">
         <img src="photo/whwl_1.png" class="corner-logo" alt="whwl_1">
         <h2>✨ 培养特色</h2>
         <ul>
@@ -723,6 +761,7 @@
 
     <!-- 就业前景 -->
     <div class="slide" :class="{ active: currentSlide === 4 }">
+        <img src="photo/school.png" class="corner-logo-school" alt="school">
         <img src="photo/whwl_1.png" class="corner-logo" alt="whwl_1">
         <h2>📈 就业前景</h2>
         <p>近三年毕业生平均就业率 <strong style="color:#1e6f9f;">96%</strong>，签约单位包括互联网大厂、世界500强、央企及政府事业单位。</p>
@@ -736,6 +775,7 @@
 
     <!-- 报考指南 -->
     <div class="slide" :class="{ active: currentSlide === 5 }">
+        <img src="photo/school.png" class="corner-logo-school" alt="school">
         <img src="photo/whwl_1.png" class="corner-logo" alt="whwl_1">
         <h2>📝 报考指南</h2>
         <ul>
@@ -748,6 +788,7 @@
 
     <!-- 联系方式 -->
     <div class="slide" :class="{ active: currentSlide === 6 }">
+        <img src="photo/school.png" class="corner-logo-school" alt="school">
         <img src="photo/whwl_1.png" class="corner-logo" alt="whwl_1">
         <h2>📞 联系我们</h2>
         <p>📍 <strong>地址：</strong>湖北省武汉市黄陂区武湖街道胜海大道1号</p>
@@ -889,6 +930,8 @@
             const showTouchHint = ref(true);
             const touchStartX = ref(0);
             const touchEndX = ref(0);
+            const touchStartY = ref(0);
+            const touchEndY = ref(0);
 
             const progressWidth = computed(() => {
                 return ((currentSlide.value + 1) / totalSlides) * 100;
@@ -1167,48 +1210,54 @@
 
             const handleTouchStart = (e) => {
                 touchStartX.value = e.touches[0].clientX;
+                touchStartY.value = e.touches[0].clientY;
             };
 
             const handleTouchEnd = (e) => {
                 touchEndX.value = e.changedTouches[0].clientX;
-                const diff = touchStartX.value - touchEndX.value;
+                touchEndY.value = e.changedTouches[0].clientY;
+                const diffX = touchStartX.value - touchEndX.value;
+                const diffY = touchStartY.value - touchEndY.value;
                 
-                if (showMajorDetail.value) {
-                    closeMajorDetail();
-                    return;
-                }
-                if (showGallery.value) {
-                    if (Math.abs(diff) > 30) {
-                        diff > 0 ? gallery1Next() : gallery1Prev();
+                // 只处理水平滑动，忽略垂直滑动
+                if (Math.abs(diffX) > Math.abs(diffY) * 2) {
+                    if (showMajorDetail.value) {
+                        closeMajorDetail();
+                        return;
                     }
-                    return;
-                }
-                if (showGallery2.value) {
-                    if (Math.abs(diff) > 30) {
-                        diff > 0 ? gallery2Next() : gallery2Prev();
+                    if (showGallery.value) {
+                        if (Math.abs(diffX) > 20) {
+                            diffX > 0 ? gallery1Next() : gallery1Prev();
+                        }
+                        return;
                     }
-                    return;
-                }
-                if (showGallery3.value) {
-                    if (Math.abs(diff) > 30) {
-                        diff > 0 ? gallery3Next() : gallery3Prev();
+                    if (showGallery2.value) {
+                        if (Math.abs(diffX) > 20) {
+                            diffX > 0 ? gallery2Next() : gallery2Prev();
+                        }
+                        return;
                     }
-                    return;
-                }
-                if (showGallery4.value) {
-                    if (Math.abs(diff) > 30) {
-                        diff > 0 ? gallery4Next() : gallery4Prev();
+                    if (showGallery3.value) {
+                        if (Math.abs(diffX) > 20) {
+                            diffX > 0 ? gallery3Next() : gallery3Prev();
+                        }
+                        return;
                     }
-                    return;
-                }
-                if (showGalleryNew.value) {
-                    if (Math.abs(diff) > 30) {
-                        diff > 0 ? galleryNewNext() : galleryNewPrev();
+                    if (showGallery4.value) {
+                        if (Math.abs(diffX) > 20) {
+                            diffX > 0 ? gallery4Next() : gallery4Prev();
+                        }
+                        return;
                     }
-                    return;
-                }
-                if (Math.abs(diff) > 50) {
-                    diff > 0 ? goNext() : goPrev();
+                    if (showGalleryNew.value) {
+                        if (Math.abs(diffX) > 20) {
+                            diffX > 0 ? galleryNewNext() : galleryNewPrev();
+                        }
+                        return;
+                    }
+                    if (Math.abs(diffX) > 30) {
+                        diffX > 0 ? goNext() : goPrev();
+                    }
                 }
             };
 
