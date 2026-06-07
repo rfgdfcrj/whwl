@@ -1002,21 +1002,10 @@
         </ul>
     </div>
 
-    <!-- 报考指南 -->
-    <div class="slide" :class="{ active: currentSlide === 5 }">
-        <img src="photo/school.png" class="corner-logo-school" alt="school">
-        <img src="photo/whwl_1.png" class="corner-logo" alt="whwl_1">
-        <h2 style="animation: fadeInUp 0.6s ease forwards;">📝 报考指南</h2>
-        <ul style="animation: fadeInUp 0.7s ease 0.2s forwards; opacity: 0;">
-            <li><strong>招生计划：</strong>2026年本科计划招生520人（具体以省招办公布为准），专科40人。</li>
-            <li><strong>录取规则：</strong>按高考投档成绩从高到低择优录取，部分专业参考数学、英语成绩。</li>
-            <li><strong>奖助体系：</strong>国家奖学金、国家励志奖学金、校长奖学金、企业奖学金及勤工助学岗位，覆盖率达35%。</li>
-            <li><strong>学费标准：</strong>工学类专业 22800-26800 元/年（以物价部门审批为准）。</li>
-        </ul>
-    </div>
+
 
     <!-- 联系方式 -->
-    <div class="slide" :class="{ active: currentSlide === 6 }">
+    <div class="slide" :class="{ active: currentSlide === 5 }">
         <img src="photo/school.png" class="corner-logo-school" alt="school">
         <img src="photo/whwl_1.png" class="corner-logo" alt="whwl_1">
         <h2 style="animation: fadeInUp 0.6s ease forwards;">📞 联系我们</h2>
@@ -1141,7 +1130,7 @@
     createApp({
         setup() {
             const currentSlide = ref(0);
-            const totalSlides = 7;
+            const totalSlides = 6;
             const showMajorDetail = ref(false);
             const showGallery = ref(false);
             const showGallery2 = ref(false);
